@@ -120,7 +120,7 @@ struct cache_mem *init_cache_mem(unsigned long size)
   cm->write = 0;
   cm->hit = 0;
 
-  init_hash_list(cm, size);
+  init_hash_list(cm, size << 4);
 
   return cm;
 }/*}}}*/
@@ -242,10 +242,9 @@ static inline struct cache_line *LRU_lookup(struct cache_mem *cm, long long line
 /**
  * Make new line.
  * @param line : line.
- * @param max : for hash modular.
  * @return : new cache line.
  */
-static struct cache_line *create_line(long long line, long long max)
+static struct cache_line *create_line(long long line)
 {/* {{{*/
   struct cache_line *l = malloc(sizeof(struct cache_line));
 
@@ -253,9 +252,6 @@ static struct cache_line *create_line(long long line, long long max)
     return NULL;
 
   l->line = line;
-
-  // Init hash..//
-  /*  printf("create : %s\n", l->md5); */
 
   // Init list..//
   init_list(&l->head);
@@ -287,7 +283,7 @@ int LRU_cache(struct cache_mem *cm, long long line)
   lookup = LRU_lookup(cm, line);
 
   if (lookup) {
-    // lookup cache
+    /* lookup cache */
     list_move(&lookup->head, cm->list);
 
     /* return Hit */
@@ -297,11 +293,11 @@ int LRU_cache(struct cache_mem *cm, long long line)
     // not lookup cache
     
     /* make new line node */
-    new = create_line(line, cm->hash.size);
+    new = create_line(line);
     if (!new)
       return -1;
  
-    /* add cache hash list */
+    /* add cache hash list and LRU list */
     hash_insert(cm, new);
     list_add(&new->head, cm->list);
 
@@ -313,6 +309,7 @@ int LRU_cache(struct cache_mem *cm, long long line)
       list_remove(&lookup->hash);
       list_del(cm->list->prev);
       free(lookup);
+
     } else {
       cm->size++;
     }
@@ -442,6 +439,7 @@ int read_column(struct workload *wl, char *buf)
 /**
  * cache simulator main. read worklosd and analysis..
  * @param fp : file pointer
+ * @cache_size : cache size
  * @return : error code
  */
 int read_workload(FILE *fp, long cache_size)
@@ -455,6 +453,7 @@ int read_workload(FILE *fp, long cache_size)
   if (!fp)
     printf("arg is NULL\n");
 
+  /*  allocation */
   wl = malloc(sizeof(struct workload));
   cm = init_cache_mem(cache_size / CACHE_BLOCK_SIZE);
   if (!wl || !cm)
@@ -463,7 +462,7 @@ int read_workload(FILE *fp, long cache_size)
   /* read line by line */
   while (!feof(fp)){
 
-    /* read line by line. saved buf */
+    /* read line by line the file contain. save buf */
     if (fscanf(fp, "%s", buf) < 0)
       goto end;
 
