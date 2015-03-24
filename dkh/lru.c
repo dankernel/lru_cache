@@ -283,7 +283,7 @@ int LRU_cache(struct cache_mem *cm, long long line)
   lookup = LRU_lookup(cm, line);
 
   if (lookup) {
-    /* lookup cache */
+    /* lookup cache. Goto first place */
     list_move(&lookup->head, cm->list);
 
     /* return Hit */

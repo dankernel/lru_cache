@@ -27,7 +27,7 @@ int main(int argc, char *argv[]){
 
   FILE *fp;
 
-  /* Set workload file */
+  /* Get workload file from file */
   fp = open_workload(argv[1]);
   if (!fp)
     printf("FAIL open\n");
