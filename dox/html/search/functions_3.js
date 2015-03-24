@@ -1,6 +1,7 @@
 var searchData=
 [
-  ['lookup_5fhash',['lookup_hash',['../hash_8h.html#ac54ac030e7a4006a06178388a72aa43a',1,'hash.h']]],
-  ['lru_5fcache',['LRU_cache',['../lru_8h.html#a2f5a0a6a32f4aeaebeb96eb27bb32619',1,'lru.h']]],
-  ['lru_5fread',['LRU_read',['../lru_8h.html#a66199de61dbaaf537f67a7308c0d89d6',1,'lru.h']]]
+  ['init_5fcache_5fmem',['init_cache_mem',['../lru_8c.html#ab3e1156597087c5049a4dc4e9d815589',1,'lru.c']]],
+  ['init_5fhash',['init_hash',['../hash_8h.html#acd06af48c2cda8ad19417a6eb1bbe191',1,'hash.h']]],
+  ['init_5fhash_5flist',['init_hash_list',['../lru_8c.html#a24f6d621bdf35406758ad57c2d2dc60b',1,'lru.c']]],
+  ['init_5flnode',['init_lnode',['../dk__list_8h.html#a3ea33987d84e227c8398958e10a10bbd',1,'dk_list.h']]]
 ];

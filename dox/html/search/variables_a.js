@@ -1,4 +1,5 @@
 var searchData=
 [
-  ['write',['write',['../structcache__mem.html#adb5a0315176779908235c7ed3e41ec57',1,'cache_mem']]]
+  ['time',['time',['../structworkload.html#a4401c89ba5cdd383f04301470e163cfd',1,'workload']]],
+  ['type',['type',['../structworkload.html#aa2845ad1d10cf7ef276771aa7c038c40',1,'workload']]]
 ];

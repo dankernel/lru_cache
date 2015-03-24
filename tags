@@ -4,27 +4,27 @@
 !_TAG_PROGRAM_NAME	Exuberant Ctags	//
 !_TAG_PROGRAM_URL	http://ctags.sourceforge.net	/official site/
 !_TAG_PROGRAM_VERSION	5.9~svn20110310	//
-CACHE_BLOCK_SIZE	dkh/lru.h	39;"	d
-CACHE_LEN	dkh/lru.h	41;"	d
-CACHE_SIZE	dkh/lru.h	40;"	d
-DEBUG_OPTION	dkh/lru.h	43;"	d
+CACHE_BLOCK_SIZE	dkh/lru.c	39;"	d	file:
+CACHE_LEN	dkh/lru.c	41;"	d	file:
+CACHE_SIZE	dkh/lru.c	40;"	d	file:
+DEBUG_OPTION	dkh/lru.c	43;"	d	file:
 EARG_NULL	dkh/errno.h	3;"	d
-GB	dkh/lru.h	36;"	d
+GB	dkh/lru.c	36;"	d	file:
 GOLDEN_RATIO_PRIME_32	dkh/hash.h	24;"	d
 HLIST_HEAD	dkh/list.h	684;"	d
 HLIST_HEAD_INIT	dkh/list.h	683;"	d
 INIT_HLIST_HEAD	dkh/list.h	685;"	d
 INIT_HLIST_NODE	dkh/list.h	/^static inline void INIT_HLIST_NODE(struct hlist_node *h)$/;"	f
 INIT_LIST_HEAD	dkh/list.h	/^static inline void INIT_LIST_HEAD(struct list_head *list)$/;"	f
-KB	dkh/lru.h	34;"	d
+KB	dkh/lru.c	34;"	d	file:
 LIST_HEAD	dkh/list.h	27;"	d
 LIST_HEAD_INIT	dkh/list.h	25;"	d
-LRU_cache	dkh/lru.h	/^int LRU_cache(struct cache_mem *cm, long long line)$/;"	f
-LRU_lookup	dkh/lru.h	/^static inline struct cache_line *LRU_lookup(struct cache_mem *cm, long long line)$/;"	f
-MB	dkh/lru.h	35;"	d
-READ	dkh/lru.h	30;"	d
+LRU_cache	dkh/lru.c	/^int LRU_cache(struct cache_mem *cm, long long line)$/;"	f
+LRU_lookup	dkh/lru.c	/^static inline struct cache_line *LRU_lookup(struct cache_mem *cm, long long line)$/;"	f	file:
+MB	dkh/lru.c	35;"	d	file:
+READ	dkh/lru.c	30;"	d	file:
 RELOC_HIDE	dkh/compiler.h	69;"	d
-WRITE	dkh/lru.h	31;"	d
+WRITE	dkh/lru.c	31;"	d	file:
 _LINUX_LIST_H	dkh/list.h	2;"	d
 __LINUX_COMPILER_H	dkh/compiler.h	2;"	d
 __acquire	dkh/compiler.h	15;"	d
@@ -76,25 +76,25 @@ __user	dkh/compiler.h	21;"	d
 __user	dkh/compiler.h	7;"	d
 add_hash_table	dkh/hash.h	/^int add_hash_table(struct hash_table *ht, unsigned int val)$/;"	f
 barrier	dkh/compiler.h	65;"	d
-bucket	dkh/lru.h	/^  struct list_head *bucket;$/;"	m	struct:lru_hash	typeref:struct:lru_hash::list_head
-cache_line	dkh/lru.h	/^struct cache_line$/;"	s
-cache_mem	dkh/lru.h	/^struct cache_mem$/;"	s
+bucket	dkh/lru.c	/^  struct list_head *bucket;$/;"	m	struct:lru_hash	typeref:struct:lru_hash::list_head	file:
+cache_line	dkh/lru.c	/^struct cache_line$/;"	s	file:
+cache_mem	dkh/lru.c	/^struct cache_mem$/;"	s	file:
 container_of	dkh/dk_list.h	29;"	d
-create_line	dkh/lru.h	/^static struct cache_line *create_line(long long line, long long max)$/;"	f
-del_cm	dkh/lru.h	/^int del_cm(struct cache_mem *cm)$/;"	f
-disk_num	dkh/lru.h	/^  int disk_num;$/;"	m	struct:workload
+create_line	dkh/lru.c	/^static struct cache_line *create_line(long long line)$/;"	f	file:
+del_cm	dkh/lru.c	/^int del_cm(struct cache_mem *cm)$/;"	f
+disk_num	dkh/lru.c	/^  int disk_num;$/;"	m	struct:workload	file:
 dk_list	dkh/dk_list.h	25;"	d
 err_test	dkh/print_msg.h	24;"	d
 first	dkh/list.h	/^	struct hlist_node *first;$/;"	m	struct:hlist_head	typeref:struct:hlist_head::hlist_node
-hash	dkh/lru.h	/^  struct list_head hash;$/;"	m	struct:cache_line	typeref:struct:cache_line::list_head
-hash	dkh/lru.h	/^  struct lru_hash hash;$/;"	m	struct:cache_mem	typeref:struct:cache_mem::lru_hash
+hash	dkh/lru.c	/^  struct list_head hash;$/;"	m	struct:cache_line	typeref:struct:cache_line::list_head	file:
+hash	dkh/lru.c	/^  struct lru_hash hash;$/;"	m	struct:cache_mem	typeref:struct:cache_mem::lru_hash	file:
 hash_64	dkh/hash.h	/^static __always_inline unsigned int hash_64(unsigned int val, unsigned int bits)$/;"	f
-hash_insert	dkh/lru.h	/^void hash_insert(struct cache_mem *cm, struct cache_line *l)$/;"	f
+hash_insert	dkh/lru.c	/^void hash_insert(struct cache_mem *cm, struct cache_line *l)$/;"	f
 hash_row	dkh/hash.h	/^struct hash_row$/;"	s
 hash_table	dkh/hash.h	/^struct hash_table$/;"	s
 head	dkh/hash.h	/^  struct list_head head;$/;"	m	struct:hash_row	typeref:struct:hash_row::list_head
-head	dkh/lru.h	/^  struct list_head head;$/;"	m	struct:cache_line	typeref:struct:cache_line::list_head
-hit	dkh/lru.h	/^  long hit;$/;"	m	struct:cache_mem
+head	dkh/lru.c	/^  struct list_head head;$/;"	m	struct:cache_line	typeref:struct:cache_line::list_head	file:
+hit	dkh/lru.c	/^  long hit;$/;"	m	struct:cache_mem	file:
 hlist_add_after	dkh/list.h	/^static inline void hlist_add_after(struct hlist_node *n,$/;"	f
 hlist_add_after_rcu	dkh/list.h	/^static inline void hlist_add_after_rcu(struct hlist_node *prev,$/;"	f
 hlist_add_before	dkh/list.h	/^static inline void hlist_add_before(struct hlist_node *n,$/;"	f
@@ -117,16 +117,16 @@ hlist_head	dkh/list.h	/^struct hlist_head {$/;"	s
 hlist_node	dkh/list.h	/^struct hlist_node {$/;"	s
 hlist_replace_rcu	dkh/list.h	/^static inline void hlist_replace_rcu(struct hlist_node *old,$/;"	f
 hlist_unhashed	dkh/list.h	/^static inline int hlist_unhashed(const struct hlist_node *h)$/;"	f
-host	dkh/lru.h	/^  char *host;$/;"	m	struct:workload
-init_cache_mem	dkh/lru.h	/^struct cache_mem *init_cache_mem(unsigned long size)$/;"	f
+host	dkh/lru.c	/^  char *host;$/;"	m	struct:workload	file:
+init_cache_mem	dkh/lru.c	/^struct cache_mem *init_cache_mem(unsigned long size)$/;"	f
 init_hash	dkh/hash.h	/^struct hash_table *init_hash(int len)$/;"	f
-init_hash_list	dkh/lru.h	/^int init_hash_list(struct cache_mem *cm, unsigned long s)$/;"	f
+init_hash_list	dkh/lru.c	/^int init_hash_list(struct cache_mem *cm, unsigned long s)$/;"	f
 init_list	dkh/dk_list.h	/^static inline void init_list(struct list_head *head)$/;"	f
 init_lnode	dkh/dk_list.h	/^struct list_head *init_lnode()$/;"	f
 len	dkh/hash.h	/^  int len;$/;"	m	struct:hash_table
 likely	dkh/compiler.h	60;"	d
-line	dkh/lru.h	/^  long line;$/;"	m	struct:cache_line
-list	dkh/lru.h	/^  struct list_head *list;$/;"	m	struct:cache_mem	typeref:struct:cache_mem::list_head
+line	dkh/lru.c	/^  long line;$/;"	m	struct:cache_line	file:
+list	dkh/lru.c	/^  struct list_head *list;$/;"	m	struct:cache_mem	typeref:struct:cache_mem::list_head	file:
 list_add	dkh/dk_list.h	/^static inline void list_add(struct list_head *new, struct list_head *head)$/;"	f
 list_add	dkh/list.h	/^static inline void list_add(struct list_head *new, struct list_head *head)$/;"	f
 list_add_rcu	dkh/list.h	/^static inline void list_add_rcu(struct list_head *new, struct list_head *head)$/;"	f
@@ -136,11 +136,11 @@ list_del	dkh/dk_list.h	/^static inline void list_del(struct list_head *entry)$/;
 list_del	dkh/list.h	/^static inline void list_del(struct list_head *entry)$/;"	f
 list_del_init	dkh/list.h	/^static inline void list_del_init(struct list_head *entry)$/;"	f
 list_del_rcu	dkh/list.h	/^static inline void list_del_rcu(struct list_head *entry)$/;"	f
-list_each	dkh/lru.h	26;"	d
+list_each	dkh/lru.c	26;"	d	file:
 list_empty	dkh/list.h	/^static inline int list_empty(const struct list_head *head)$/;"	f
 list_empty_careful	dkh/list.h	/^static inline int list_empty_careful(const struct list_head *head)$/;"	f
 list_entry	dkh/list.h	425;"	d
-list_entry	dkh/lru.h	23;"	d
+list_entry	dkh/lru.c	23;"	d	file:
 list_first_entry	dkh/list.h	436;"	d
 list_for_each	dkh/dk_list.h	33;"	d
 list_for_each	dkh/list.h	444;"	d
@@ -177,35 +177,35 @@ list_splice	dkh/list.h	/^static inline void list_splice(struct list_head *list, 
 list_splice_init	dkh/list.h	/^static inline void list_splice_init(struct list_head *list,$/;"	f
 list_splice_init_rcu	dkh/list.h	/^static inline void list_splice_init_rcu(struct list_head *list,$/;"	f
 lookup_hash	dkh/hash.h	/^int lookup_hash(struct hash_table *ht)$/;"	f
-lru_hash	dkh/lru.h	/^struct lru_hash$/;"	s
+lru_hash	dkh/lru.c	/^struct lru_hash$/;"	s	file:
 main	main.c	/^int main(int argc, char *argv[]){$/;"	f
-max	dkh/lru.h	/^  long max;$/;"	m	struct:cache_mem
+max	dkh/lru.c	/^  long max;$/;"	m	struct:cache_mem	file:
 next	dkh/dk_list.h	/^  struct list_head *next;$/;"	m	struct:list_head	typeref:struct:list_head::list_head
 next	dkh/list.h	/^	struct hlist_node *next, **pprev;$/;"	m	struct:hlist_node	typeref:struct:hlist_node::hlist_node
 next	dkh/list.h	/^	struct list_head *next, *prev;$/;"	m	struct:list_head	typeref:struct:list_head::list_head
 noinline	dkh/compiler.h	150;"	d
-offset	dkh/lru.h	/^  unsigned long long offset;$/;"	m	struct:workload
+offset	dkh/lru.c	/^  unsigned long long offset;$/;"	m	struct:workload	file:
 offsetof	dkh/dk_list.h	27;"	d
-open_workload	dkh/lru.h	/^FILE *open_workload(char *file)$/;"	f
+open_workload	dkh/lru.c	/^FILE *open_workload(char *file)$/;"	f
 p	dkh/hash.h	/^  void *p;$/;"	m	struct:hash_row
 pprev	dkh/list.h	/^	struct hlist_node *next, **pprev;$/;"	m	struct:hlist_node	typeref:struct:hlist_node::
 prev	dkh/dk_list.h	/^  struct list_head *prev;$/;"	m	struct:list_head	typeref:struct:list_head::list_head
 prev	dkh/list.h	/^	struct list_head *next, *prev;$/;"	m	struct:list_head	typeref:struct:list_head::
-print_cm	dkh/lru.h	/^int print_cm(struct cache_mem *cm)$/;"	f
+print_cm	dkh/lru.c	/^int print_cm(struct cache_mem *cm)$/;"	f
 print_f	dkh/print_msg.h	20;"	d
 print_o	dkh/print_msg.h	21;"	d
-read	dkh/lru.h	/^  long read;$/;"	m	struct:cache_mem
-read_column	dkh/lru.h	/^int read_column(struct workload *wl, char *buf)$/;"	f
-read_workload	dkh/lru.h	/^int read_workload(FILE *fp, long cache_size)$/;"	f
-report_cm	dkh/lru.h	/^void report_cm(struct cache_mem *cm)$/;"	f
-respone	dkh/lru.h	/^  long respone; \/\/respones time$/;"	m	struct:workload
+read	dkh/lru.c	/^  long read;$/;"	m	struct:cache_mem	file:
+read_column	dkh/lru.c	/^int read_column(struct workload *wl, char *buf)$/;"	f
+read_workload	dkh/lru.c	/^int read_workload(FILE *fp, long cache_size)$/;"	f
+report_cm	dkh/lru.c	/^void report_cm(struct cache_mem *cm)$/;"	f
+respone	dkh/lru.c	/^  long respone; \/\/respones time$/;"	m	struct:workload	file:
 row	dkh/hash.h	/^  struct hash_row *row;$/;"	m	struct:hash_table	typeref:struct:hash_table::hash_row
-run_cache	dkh/lru.h	/^int run_cache(struct cache_mem *cm, struct workload *wl)$/;"	f
-size	dkh/lru.h	/^  long long size;$/;"	m	struct:lru_hash
-size	dkh/lru.h	/^  long size;$/;"	m	struct:cache_mem
-size	dkh/lru.h	/^  long size;$/;"	m	struct:workload
-time	dkh/lru.h	/^  char *time;$/;"	m	struct:workload
-type	dkh/lru.h	/^  int type;$/;"	m	struct:workload
+run_cache	dkh/lru.c	/^int run_cache(struct cache_mem *cm, struct workload *wl)$/;"	f
+size	dkh/lru.c	/^  long long size;$/;"	m	struct:lru_hash	file:
+size	dkh/lru.c	/^  long size;$/;"	m	struct:cache_mem	file:
+size	dkh/lru.c	/^  long size;$/;"	m	struct:workload	file:
+time	dkh/lru.c	/^  char *time;$/;"	m	struct:workload	file:
+type	dkh/lru.c	/^  int type;$/;"	m	struct:workload	file:
 unlikely	dkh/compiler.h	61;"	d
-workload	dkh/lru.h	/^struct workload$/;"	s
-write	dkh/lru.h	/^  long write;$/;"	m	struct:cache_mem
+workload	dkh/lru.c	/^struct workload$/;"	s	file:
+write	dkh/lru.c	/^  long write;$/;"	m	struct:cache_mem	file:

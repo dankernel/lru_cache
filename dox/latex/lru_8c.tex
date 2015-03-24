@@ -1,0 +1,350 @@
+\hypertarget{lru_8c}{\section{dkh/lru.c 파일 참조}
+\label{lru_8c}\index{dkh/lru.\+c@{dkh/lru.\+c}}
+}
+{\ttfamily \#include $<$math.\+h$>$}\\*
+{\ttfamily \#include $<$stdio.\+h$>$}\\*
+{\ttfamily \#include \char`\"{}dk\+\_\+list.\+h\char`\"{}}\\*
+{\ttfamily \#include \char`\"{}errno.\+h\char`\"{}}\\*
+lru.\+c에 대한 include 의존 그래프
+이 그래프는 이 파일을 직/간접적으로 include 하는 파일들을 보여줍니다.\+:
+\subsection*{클래스}
+\begin{DoxyCompactItemize}
+\item 
+struct \hyperlink{structworkload}{workload}
+\item 
+struct \hyperlink{structcache__line}{cache\+\_\+line}
+\item 
+struct \hyperlink{structlru__hash}{lru\+\_\+hash}
+\item 
+struct \hyperlink{structcache__mem}{cache\+\_\+mem}
+\end{DoxyCompactItemize}
+\subsection*{매크로}
+\begin{DoxyCompactItemize}
+\item 
+\#define \hyperlink{lru_8c_ac72e2a4f57215639f788aa59ca056fe1}{list\+\_\+entry}(ptr, type, field)~((type$\ast$) (((char$\ast$)ptr) -\/ \hyperlink{dk__list_8h_afd049f7ad59dbe455f460807475c2841}{offsetof}(type,field)))
+\item 
+\#define \hyperlink{lru_8c_ad862f84945dddd7f7641257f3519d913}{list\+\_\+each}(pos, head)~for (pos = (head)-\/$>$next; pos != (head); pos = pos-\/$>$next)
+\item 
+\#define \hyperlink{lru_8c_ada74e7db007a68e763f20c17f2985356}{R\+E\+A\+D}~1
+\item 
+\#define \hyperlink{lru_8c_aa10f470e996d0f51210d24f442d25e1e}{W\+R\+I\+T\+E}~2
+\item 
+\#define \hyperlink{lru_8c_a1841fd1a462d245d8c73dce55e2f45da}{K\+B}~(1024)
+\item 
+\#define \hyperlink{lru_8c_aa6b38d492364d98453284934ed7caee9}{M\+B}~(\hyperlink{lru_8c_a1841fd1a462d245d8c73dce55e2f45da}{K\+B} $\ast$ \hyperlink{lru_8c_a1841fd1a462d245d8c73dce55e2f45da}{K\+B})
+\item 
+\#define \hyperlink{lru_8c_a44172ac633c517cb4c9e278cef36b000}{G\+B}~(\hyperlink{lru_8c_aa6b38d492364d98453284934ed7caee9}{M\+B} $\ast$ \hyperlink{lru_8c_a1841fd1a462d245d8c73dce55e2f45da}{K\+B})
+\item 
+\#define \hyperlink{lru_8c_a9e92828e1e7a7cc03003c00282384f96}{C\+A\+C\+H\+E\+\_\+\+B\+L\+O\+C\+K\+\_\+\+S\+I\+Z\+E}~(4 $\ast$ \hyperlink{lru_8c_a1841fd1a462d245d8c73dce55e2f45da}{K\+B})
+\item 
+\#define \hyperlink{lru_8c_a8a6befd630ea1c2ab260266f7466540c}{C\+A\+C\+H\+E\+\_\+\+S\+I\+Z\+E}~(128 $\ast$ \hyperlink{lru_8c_aa6b38d492364d98453284934ed7caee9}{M\+B})
+\item 
+\#define \hyperlink{lru_8c_a5f235d9e65a9cf74d98a037841b04f42}{C\+A\+C\+H\+E\+\_\+\+L\+E\+N}~(\hyperlink{lru_8c_a8a6befd630ea1c2ab260266f7466540c}{C\+A\+C\+H\+E\+\_\+\+S\+I\+Z\+E}/ \hyperlink{lru_8c_a9e92828e1e7a7cc03003c00282384f96}{C\+A\+C\+H\+E\+\_\+\+B\+L\+O\+C\+K\+\_\+\+S\+I\+Z\+E})
+\item 
+\#define \hyperlink{lru_8c_ae596a4581aaa87caa5cfc716730adaa1}{D\+E\+B\+U\+G\+\_\+\+O\+P\+T\+I\+O\+N}~0
+\end{DoxyCompactItemize}
+\subsection*{함수}
+\begin{DoxyCompactItemize}
+\item 
+int \hyperlink{lru_8c_a24f6d621bdf35406758ad57c2d2dc60b}{init\+\_\+hash\+\_\+list} (struct \hyperlink{structcache__mem}{cache\+\_\+mem} $\ast$cm, unsigned long s)
+\item 
+struct \hyperlink{structcache__mem}{cache\+\_\+mem} $\ast$ \hyperlink{lru_8c_ab3e1156597087c5049a4dc4e9d815589}{init\+\_\+cache\+\_\+mem} (unsigned long size)
+\item 
+void \hyperlink{lru_8c_a987168b3169b138b36aad5903e5ce4ee}{report\+\_\+cm} (struct \hyperlink{structcache__mem}{cache\+\_\+mem} $\ast$cm)
+\item 
+int \hyperlink{lru_8c_a8cc95bde93b57fde8f83927b3fd8cca4}{print\+\_\+cm} (struct \hyperlink{structcache__mem}{cache\+\_\+mem} $\ast$cm)
+\item 
+int \hyperlink{lru_8c_a23006b111470e3ef68070346a710bc65}{del\+\_\+cm} (struct \hyperlink{structcache__mem}{cache\+\_\+mem} $\ast$cm)
+\item 
+void \hyperlink{lru_8c_a9db056188028c8ff40a396e239f5f261}{hash\+\_\+insert} (struct \hyperlink{structcache__mem}{cache\+\_\+mem} $\ast$cm, struct \hyperlink{structcache__line}{cache\+\_\+line} $\ast$l)
+\item 
+int \hyperlink{lru_8c_ae62168030cc81ad9f39604d8a277668a}{L\+R\+U\+\_\+cache} (struct \hyperlink{structcache__mem}{cache\+\_\+mem} $\ast$cm, long long line)
+\item 
+int \hyperlink{lru_8c_a3d667614dda729b6e0491823d5e8b3d1}{run\+\_\+cache} (struct \hyperlink{structcache__mem}{cache\+\_\+mem} $\ast$cm, struct \hyperlink{structworkload}{workload} $\ast$wl)
+\item 
+F\+I\+L\+E $\ast$ \hyperlink{lru_8c_a18d6e93c1f872081867eee56e7d943f7}{open\+\_\+workload} (char $\ast$file)
+\item 
+int \hyperlink{lru_8c_a30c6287565ac5b2d5161a0642c59888a}{read\+\_\+column} (struct \hyperlink{structworkload}{workload} $\ast$wl, char $\ast$buf)
+\item 
+int \hyperlink{lru_8c_aded550bbf55ac065a041acd00dcfa43a}{read\+\_\+workload} (F\+I\+L\+E $\ast$fp, long cache\+\_\+size)
+\end{DoxyCompactItemize}
+
+
+\subsection{매크로 문서화}
+\hypertarget{lru_8c_a9e92828e1e7a7cc03003c00282384f96}{\index{lru.\+c@{lru.\+c}!C\+A\+C\+H\+E\+\_\+\+B\+L\+O\+C\+K\+\_\+\+S\+I\+Z\+E@{C\+A\+C\+H\+E\+\_\+\+B\+L\+O\+C\+K\+\_\+\+S\+I\+Z\+E}}
+\index{C\+A\+C\+H\+E\+\_\+\+B\+L\+O\+C\+K\+\_\+\+S\+I\+Z\+E@{C\+A\+C\+H\+E\+\_\+\+B\+L\+O\+C\+K\+\_\+\+S\+I\+Z\+E}!lru.\+c@{lru.\+c}}
+\subsubsection[{C\+A\+C\+H\+E\+\_\+\+B\+L\+O\+C\+K\+\_\+\+S\+I\+Z\+E}]{\setlength{\rightskip}{0pt plus 5cm}\#define C\+A\+C\+H\+E\+\_\+\+B\+L\+O\+C\+K\+\_\+\+S\+I\+Z\+E~(4 $\ast$ {\bf K\+B})}}\label{lru_8c_a9e92828e1e7a7cc03003c00282384f96}
+\hypertarget{lru_8c_a5f235d9e65a9cf74d98a037841b04f42}{\index{lru.\+c@{lru.\+c}!C\+A\+C\+H\+E\+\_\+\+L\+E\+N@{C\+A\+C\+H\+E\+\_\+\+L\+E\+N}}
+\index{C\+A\+C\+H\+E\+\_\+\+L\+E\+N@{C\+A\+C\+H\+E\+\_\+\+L\+E\+N}!lru.\+c@{lru.\+c}}
+\subsubsection[{C\+A\+C\+H\+E\+\_\+\+L\+E\+N}]{\setlength{\rightskip}{0pt plus 5cm}\#define C\+A\+C\+H\+E\+\_\+\+L\+E\+N~({\bf C\+A\+C\+H\+E\+\_\+\+S\+I\+Z\+E}/ {\bf C\+A\+C\+H\+E\+\_\+\+B\+L\+O\+C\+K\+\_\+\+S\+I\+Z\+E})}}\label{lru_8c_a5f235d9e65a9cf74d98a037841b04f42}
+\hypertarget{lru_8c_a8a6befd630ea1c2ab260266f7466540c}{\index{lru.\+c@{lru.\+c}!C\+A\+C\+H\+E\+\_\+\+S\+I\+Z\+E@{C\+A\+C\+H\+E\+\_\+\+S\+I\+Z\+E}}
+\index{C\+A\+C\+H\+E\+\_\+\+S\+I\+Z\+E@{C\+A\+C\+H\+E\+\_\+\+S\+I\+Z\+E}!lru.\+c@{lru.\+c}}
+\subsubsection[{C\+A\+C\+H\+E\+\_\+\+S\+I\+Z\+E}]{\setlength{\rightskip}{0pt plus 5cm}\#define C\+A\+C\+H\+E\+\_\+\+S\+I\+Z\+E~(128 $\ast$ {\bf M\+B})}}\label{lru_8c_a8a6befd630ea1c2ab260266f7466540c}
+\hypertarget{lru_8c_ae596a4581aaa87caa5cfc716730adaa1}{\index{lru.\+c@{lru.\+c}!D\+E\+B\+U\+G\+\_\+\+O\+P\+T\+I\+O\+N@{D\+E\+B\+U\+G\+\_\+\+O\+P\+T\+I\+O\+N}}
+\index{D\+E\+B\+U\+G\+\_\+\+O\+P\+T\+I\+O\+N@{D\+E\+B\+U\+G\+\_\+\+O\+P\+T\+I\+O\+N}!lru.\+c@{lru.\+c}}
+\subsubsection[{D\+E\+B\+U\+G\+\_\+\+O\+P\+T\+I\+O\+N}]{\setlength{\rightskip}{0pt plus 5cm}\#define D\+E\+B\+U\+G\+\_\+\+O\+P\+T\+I\+O\+N~0}}\label{lru_8c_ae596a4581aaa87caa5cfc716730adaa1}
+\hypertarget{lru_8c_a44172ac633c517cb4c9e278cef36b000}{\index{lru.\+c@{lru.\+c}!G\+B@{G\+B}}
+\index{G\+B@{G\+B}!lru.\+c@{lru.\+c}}
+\subsubsection[{G\+B}]{\setlength{\rightskip}{0pt plus 5cm}\#define G\+B~({\bf M\+B} $\ast$ {\bf K\+B})}}\label{lru_8c_a44172ac633c517cb4c9e278cef36b000}
+\hypertarget{lru_8c_a1841fd1a462d245d8c73dce55e2f45da}{\index{lru.\+c@{lru.\+c}!K\+B@{K\+B}}
+\index{K\+B@{K\+B}!lru.\+c@{lru.\+c}}
+\subsubsection[{K\+B}]{\setlength{\rightskip}{0pt plus 5cm}\#define K\+B~(1024)}}\label{lru_8c_a1841fd1a462d245d8c73dce55e2f45da}
+\hypertarget{lru_8c_ad862f84945dddd7f7641257f3519d913}{\index{lru.\+c@{lru.\+c}!list\+\_\+each@{list\+\_\+each}}
+\index{list\+\_\+each@{list\+\_\+each}!lru.\+c@{lru.\+c}}
+\subsubsection[{list\+\_\+each}]{\setlength{\rightskip}{0pt plus 5cm}\#define list\+\_\+each(
+\begin{DoxyParamCaption}
+\item[{}]{pos, }
+\item[{}]{head}
+\end{DoxyParamCaption}
+)~for (pos = (head)-\/$>$next; pos != (head); pos = pos-\/$>$next)}}\label{lru_8c_ad862f84945dddd7f7641257f3519d913}
+\hypertarget{lru_8c_ac72e2a4f57215639f788aa59ca056fe1}{\index{lru.\+c@{lru.\+c}!list\+\_\+entry@{list\+\_\+entry}}
+\index{list\+\_\+entry@{list\+\_\+entry}!lru.\+c@{lru.\+c}}
+\subsubsection[{list\+\_\+entry}]{\setlength{\rightskip}{0pt plus 5cm}\#define list\+\_\+entry(
+\begin{DoxyParamCaption}
+\item[{}]{ptr, }
+\item[{}]{type, }
+\item[{}]{field}
+\end{DoxyParamCaption}
+)~((type$\ast$) (((char$\ast$)ptr) -\/ {\bf offsetof}(type,field)))}}\label{lru_8c_ac72e2a4f57215639f788aa59ca056fe1}
+\hypertarget{lru_8c_aa6b38d492364d98453284934ed7caee9}{\index{lru.\+c@{lru.\+c}!M\+B@{M\+B}}
+\index{M\+B@{M\+B}!lru.\+c@{lru.\+c}}
+\subsubsection[{M\+B}]{\setlength{\rightskip}{0pt plus 5cm}\#define M\+B~({\bf K\+B} $\ast$ {\bf K\+B})}}\label{lru_8c_aa6b38d492364d98453284934ed7caee9}
+\hypertarget{lru_8c_ada74e7db007a68e763f20c17f2985356}{\index{lru.\+c@{lru.\+c}!R\+E\+A\+D@{R\+E\+A\+D}}
+\index{R\+E\+A\+D@{R\+E\+A\+D}!lru.\+c@{lru.\+c}}
+\subsubsection[{R\+E\+A\+D}]{\setlength{\rightskip}{0pt plus 5cm}\#define R\+E\+A\+D~1}}\label{lru_8c_ada74e7db007a68e763f20c17f2985356}
+\hypertarget{lru_8c_aa10f470e996d0f51210d24f442d25e1e}{\index{lru.\+c@{lru.\+c}!W\+R\+I\+T\+E@{W\+R\+I\+T\+E}}
+\index{W\+R\+I\+T\+E@{W\+R\+I\+T\+E}!lru.\+c@{lru.\+c}}
+\subsubsection[{W\+R\+I\+T\+E}]{\setlength{\rightskip}{0pt plus 5cm}\#define W\+R\+I\+T\+E~2}}\label{lru_8c_aa10f470e996d0f51210d24f442d25e1e}
+
+
+\subsection{함수 문서화}
+\hypertarget{lru_8c_a23006b111470e3ef68070346a710bc65}{\index{lru.\+c@{lru.\+c}!del\+\_\+cm@{del\+\_\+cm}}
+\index{del\+\_\+cm@{del\+\_\+cm}!lru.\+c@{lru.\+c}}
+\subsubsection[{del\+\_\+cm}]{\setlength{\rightskip}{0pt plus 5cm}int del\+\_\+cm (
+\begin{DoxyParamCaption}
+\item[{struct {\bf cache\+\_\+mem} $\ast$}]{cm}
+\end{DoxyParamCaption}
+)}}\label{lru_8c_a23006b111470e3ef68070346a710bc65}
+Del cache memory.(cache list) 
+\begin{DoxyParams}{매개변수}
+{\em cm} & \+: cache memory struct \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{반환값}
+\+: error code 
+\end{DoxyReturn}
+
+
+이 함수를 호출하는 함수들에 대한 그래프입니다.\+:
+
+
+\hypertarget{lru_8c_a9db056188028c8ff40a396e239f5f261}{\index{lru.\+c@{lru.\+c}!hash\+\_\+insert@{hash\+\_\+insert}}
+\index{hash\+\_\+insert@{hash\+\_\+insert}!lru.\+c@{lru.\+c}}
+\subsubsection[{hash\+\_\+insert}]{\setlength{\rightskip}{0pt plus 5cm}void hash\+\_\+insert (
+\begin{DoxyParamCaption}
+\item[{struct {\bf cache\+\_\+mem} $\ast$}]{cm, }
+\item[{struct {\bf cache\+\_\+line} $\ast$}]{l}
+\end{DoxyParamCaption}
+)}}\label{lru_8c_a9db056188028c8ff40a396e239f5f261}
+
+
+이 함수를 호출하는 함수들에 대한 그래프입니다.\+:
+
+
+\hypertarget{lru_8c_ab3e1156597087c5049a4dc4e9d815589}{\index{lru.\+c@{lru.\+c}!init\+\_\+cache\+\_\+mem@{init\+\_\+cache\+\_\+mem}}
+\index{init\+\_\+cache\+\_\+mem@{init\+\_\+cache\+\_\+mem}!lru.\+c@{lru.\+c}}
+\subsubsection[{init\+\_\+cache\+\_\+mem}]{\setlength{\rightskip}{0pt plus 5cm}struct {\bf cache\+\_\+mem}$\ast$ init\+\_\+cache\+\_\+mem (
+\begin{DoxyParamCaption}
+\item[{unsigned long}]{size}
+\end{DoxyParamCaption}
+)}}\label{lru_8c_ab3e1156597087c5049a4dc4e9d815589}
+Init cache memory. 
+\begin{DoxyParams}{매개변수}
+{\em m} & \+: cache size (max list size) \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{반환값}
+\+: \hyperlink{structcache__mem}{cache\+\_\+mem} strcut pointer 
+\end{DoxyReturn}
+
+
+이 함수 내부에서 호출하는 함수들에 대한 그래프입니다.\+:
+
+
+
+
+이 함수를 호출하는 함수들에 대한 그래프입니다.\+:
+
+
+\hypertarget{lru_8c_a24f6d621bdf35406758ad57c2d2dc60b}{\index{lru.\+c@{lru.\+c}!init\+\_\+hash\+\_\+list@{init\+\_\+hash\+\_\+list}}
+\index{init\+\_\+hash\+\_\+list@{init\+\_\+hash\+\_\+list}!lru.\+c@{lru.\+c}}
+\subsubsection[{init\+\_\+hash\+\_\+list}]{\setlength{\rightskip}{0pt plus 5cm}int init\+\_\+hash\+\_\+list (
+\begin{DoxyParamCaption}
+\item[{struct {\bf cache\+\_\+mem} $\ast$}]{cm, }
+\item[{unsigned long}]{s}
+\end{DoxyParamCaption}
+)}}\label{lru_8c_a24f6d621bdf35406758ad57c2d2dc60b}
+
+
+이 함수를 호출하는 함수들에 대한 그래프입니다.\+:
+
+
+\hypertarget{lru_8c_ae62168030cc81ad9f39604d8a277668a}{\index{lru.\+c@{lru.\+c}!L\+R\+U\+\_\+cache@{L\+R\+U\+\_\+cache}}
+\index{L\+R\+U\+\_\+cache@{L\+R\+U\+\_\+cache}!lru.\+c@{lru.\+c}}
+\subsubsection[{L\+R\+U\+\_\+cache}]{\setlength{\rightskip}{0pt plus 5cm}int L\+R\+U\+\_\+cache (
+\begin{DoxyParamCaption}
+\item[{struct {\bf cache\+\_\+mem} $\ast$}]{cm, }
+\item[{long long}]{line}
+\end{DoxyParamCaption}
+)}}\label{lru_8c_ae62168030cc81ad9f39604d8a277668a}
+L\+R\+U cache 
+\begin{DoxyParams}{매개변수}
+{\em cm} & \+: cache memory strcut \\
+\hline
+{\em line} & \+: write memort line  \+: error code \\
+\hline
+\end{DoxyParams}
+
+
+이 함수 내부에서 호출하는 함수들에 대한 그래프입니다.\+:
+
+
+
+
+이 함수를 호출하는 함수들에 대한 그래프입니다.\+:
+
+
+\hypertarget{lru_8c_a18d6e93c1f872081867eee56e7d943f7}{\index{lru.\+c@{lru.\+c}!open\+\_\+workload@{open\+\_\+workload}}
+\index{open\+\_\+workload@{open\+\_\+workload}!lru.\+c@{lru.\+c}}
+\subsubsection[{open\+\_\+workload}]{\setlength{\rightskip}{0pt plus 5cm}F\+I\+L\+E$\ast$ open\+\_\+workload (
+\begin{DoxyParamCaption}
+\item[{char $\ast$}]{file}
+\end{DoxyParamCaption}
+)}}\label{lru_8c_a18d6e93c1f872081867eee56e7d943f7}
+Just open file and return. 
+\begin{DoxyParams}{매개변수}
+{\em file} & \+: target file path \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{반환값}
+\+: file pointer 
+\end{DoxyReturn}
+
+
+이 함수를 호출하는 함수들에 대한 그래프입니다.\+:
+
+
+\hypertarget{lru_8c_a8cc95bde93b57fde8f83927b3fd8cca4}{\index{lru.\+c@{lru.\+c}!print\+\_\+cm@{print\+\_\+cm}}
+\index{print\+\_\+cm@{print\+\_\+cm}!lru.\+c@{lru.\+c}}
+\subsubsection[{print\+\_\+cm}]{\setlength{\rightskip}{0pt plus 5cm}int print\+\_\+cm (
+\begin{DoxyParamCaption}
+\item[{struct {\bf cache\+\_\+mem} $\ast$}]{cm}
+\end{DoxyParamCaption}
+)}}\label{lru_8c_a8cc95bde93b57fde8f83927b3fd8cca4}
+Print cache memory.(cache list) 
+\begin{DoxyParams}{매개변수}
+{\em cm} & \+: cache memory struct \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{반환값}
+\+: error code 
+\end{DoxyReturn}
+
+
+이 함수를 호출하는 함수들에 대한 그래프입니다.\+:
+
+
+\hypertarget{lru_8c_a30c6287565ac5b2d5161a0642c59888a}{\index{lru.\+c@{lru.\+c}!read\+\_\+column@{read\+\_\+column}}
+\index{read\+\_\+column@{read\+\_\+column}!lru.\+c@{lru.\+c}}
+\subsubsection[{read\+\_\+column}]{\setlength{\rightskip}{0pt plus 5cm}int read\+\_\+column (
+\begin{DoxyParamCaption}
+\item[{struct {\bf workload} $\ast$}]{wl, }
+\item[{char $\ast$}]{buf}
+\end{DoxyParamCaption}
+)}}\label{lru_8c_a30c6287565ac5b2d5161a0642c59888a}
+read colum. (=Inscribe workload struct) 
+\begin{DoxyParams}{매개변수}
+{\em wl} & \+: workload struct \\
+\hline
+{\em buf} & \+: buffer string \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{반환값}
+\+: error code 
+\end{DoxyReturn}
+
+
+이 함수를 호출하는 함수들에 대한 그래프입니다.\+:
+
+
+\hypertarget{lru_8c_aded550bbf55ac065a041acd00dcfa43a}{\index{lru.\+c@{lru.\+c}!read\+\_\+workload@{read\+\_\+workload}}
+\index{read\+\_\+workload@{read\+\_\+workload}!lru.\+c@{lru.\+c}}
+\subsubsection[{read\+\_\+workload}]{\setlength{\rightskip}{0pt plus 5cm}int read\+\_\+workload (
+\begin{DoxyParamCaption}
+\item[{F\+I\+L\+E $\ast$}]{fp, }
+\item[{long}]{cache\+\_\+size}
+\end{DoxyParamCaption}
+)}}\label{lru_8c_aded550bbf55ac065a041acd00dcfa43a}
+cache simulator main. read worklosd and analysis.. 
+\begin{DoxyParams}{매개변수}
+{\em fp} & \+: file pointer  \+: cache size \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{반환값}
+\+: error code 
+\end{DoxyReturn}
+
+
+이 함수 내부에서 호출하는 함수들에 대한 그래프입니다.\+:
+
+
+
+
+이 함수를 호출하는 함수들에 대한 그래프입니다.\+:
+
+
+\hypertarget{lru_8c_a987168b3169b138b36aad5903e5ce4ee}{\index{lru.\+c@{lru.\+c}!report\+\_\+cm@{report\+\_\+cm}}
+\index{report\+\_\+cm@{report\+\_\+cm}!lru.\+c@{lru.\+c}}
+\subsubsection[{report\+\_\+cm}]{\setlength{\rightskip}{0pt plus 5cm}void report\+\_\+cm (
+\begin{DoxyParamCaption}
+\item[{struct {\bf cache\+\_\+mem} $\ast$}]{cm}
+\end{DoxyParamCaption}
+)}}\label{lru_8c_a987168b3169b138b36aad5903e5ce4ee}
+Report result. 
+\begin{DoxyParams}{매개변수}
+{\em cm} & \+: cache memory struct \\
+\hline
+\end{DoxyParams}
+
+
+이 함수를 호출하는 함수들에 대한 그래프입니다.\+:
+
+
+\hypertarget{lru_8c_a3d667614dda729b6e0491823d5e8b3d1}{\index{lru.\+c@{lru.\+c}!run\+\_\+cache@{run\+\_\+cache}}
+\index{run\+\_\+cache@{run\+\_\+cache}!lru.\+c@{lru.\+c}}
+\subsubsection[{run\+\_\+cache}]{\setlength{\rightskip}{0pt plus 5cm}int run\+\_\+cache (
+\begin{DoxyParamCaption}
+\item[{struct {\bf cache\+\_\+mem} $\ast$}]{cm, }
+\item[{struct {\bf workload} $\ast$}]{wl}
+\end{DoxyParamCaption}
+)}}\label{lru_8c_a3d667614dda729b6e0491823d5e8b3d1}
+run cache. 
+\begin{DoxyParams}{매개변수}
+{\em cm} & \+: cache memory info strcut \\
+\hline
+{\em wl} & \+: target workload struct \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{반환값}
+\+: error code 
+\end{DoxyReturn}
+
+
+이 함수 내부에서 호출하는 함수들에 대한 그래프입니다.\+:
+
+
+
+
+이 함수를 호출하는 함수들에 대한 그래프입니다.\+:
+
+

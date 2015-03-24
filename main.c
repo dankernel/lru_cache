@@ -6,7 +6,7 @@
  *
  *          @date:  2014년 10월 30일 19시 48분 57초
  *        @author:  Jun-Hyung Park (), google@dankook.ac.kr
- *        Version:  1.0
+ *        Version:  2.0
  *
  *       Revision:  none
  *       Compiler:  gcc
@@ -15,11 +15,9 @@
  *
  * =====================================================================================
  */
-#include <stdlib.h>
+
 #include <stdio.h>
-#include <string.h>
-#include <fcntl.h>
-#include "./dkh/lru.h"
+#include "./dkh/lru.c"
 
 /**
  * Main function

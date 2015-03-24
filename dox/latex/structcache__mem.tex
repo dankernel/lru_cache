@@ -3,11 +3,8 @@
 }
 
 
-{\ttfamily \#include $<$lru.\+h$>$}
-
-
-
-cache\+\_\+mem에 대한 협력 다이어그램\+:\nopagebreak
+cache\+\_\+mem에 대한 협력 다이어그램\+:
+\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -28,10 +25,15 @@ long \hyperlink{structcache__mem_af64061b621392a1872f5cb92dde7dc7c}{read}
 long \hyperlink{structcache__mem_adb5a0315176779908235c7ed3e41ec57}{write}
 \item 
 long \hyperlink{structcache__mem_a2b8742701cf4beaff0639d36d52209d9}{hit}
+\item 
+struct \hyperlink{structlru__hash}{lru\+\_\+hash} \hyperlink{structcache__mem_a33b5307112f19826b77d6bcaf8044638}{hash}
 \end{DoxyCompactItemize}
 
 
 \subsection{멤버 데이타 문서화}
+\hypertarget{structcache__mem_a33b5307112f19826b77d6bcaf8044638}{\index{cache\+\_\+mem@{cache\+\_\+mem}!hash@{hash}}
+\index{hash@{hash}!cache\+\_\+mem@{cache\+\_\+mem}}
+\subsubsection[{hash}]{\setlength{\rightskip}{0pt plus 5cm}struct {\bf lru\+\_\+hash} cache\+\_\+mem\+::hash}}\label{structcache__mem_a33b5307112f19826b77d6bcaf8044638}
 \hypertarget{structcache__mem_a2b8742701cf4beaff0639d36d52209d9}{\index{cache\+\_\+mem@{cache\+\_\+mem}!hit@{hit}}
 \index{hit@{hit}!cache\+\_\+mem@{cache\+\_\+mem}}
 \subsubsection[{hit}]{\setlength{\rightskip}{0pt plus 5cm}long cache\+\_\+mem\+::hit}}\label{structcache__mem_a2b8742701cf4beaff0639d36d52209d9}
@@ -54,4 +56,4 @@ long \hyperlink{structcache__mem_a2b8742701cf4beaff0639d36d52209d9}{hit}
 
 이 구조체에 대한 문서화 페이지는 다음의 파일로부터 생성되었습니다.\+:\begin{DoxyCompactItemize}
 \item 
-dkh/\hyperlink{lru_8h}{lru.\+h}\end{DoxyCompactItemize}
+dkh/\hyperlink{lru_8c}{lru.\+c}\end{DoxyCompactItemize}

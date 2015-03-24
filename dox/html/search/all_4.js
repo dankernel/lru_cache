@@ -1,6 +1,8 @@
 var searchData=
 [
-  ['earg_5fnull',['EARG_NULL',['../errno_8h.html#afd07dee740688463691d16fa242d4dd4',1,'errno.h']]],
-  ['err_5ftest',['err_test',['../print__msg_8h.html#ad99dea35493c09039b0a873512d61683',1,'print_msg.h']]],
-  ['errno_2eh',['errno.h',['../errno_8h.html',1,'']]]
+  ['debug_5foption',['DEBUG_OPTION',['../lru_8c.html#ae596a4581aaa87caa5cfc716730adaa1',1,'lru.c']]],
+  ['del_5fcm',['del_cm',['../lru_8c.html#a23006b111470e3ef68070346a710bc65',1,'lru.c']]],
+  ['disk_5fnum',['disk_num',['../structworkload.html#ac5fbfd8a1e652dc2b6e742ce685eb1fa',1,'workload']]],
+  ['dk_5flist',['dk_list',['../dk__list_8h.html#ac43e6febb62e5d3998f206e4eafcad5e',1,'dk_list.h']]],
+  ['dk_5flist_2eh',['dk_list.h',['../dk__list_8h.html',1,'']]]
 ];

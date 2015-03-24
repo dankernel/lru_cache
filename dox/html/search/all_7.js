@@ -1,6 +1,11 @@
 var searchData=
 [
-  ['init_5fcache_5fmem',['init_cache_mem',['../lru_8h.html#a97ee2a27cdbe15463e52c1b0606cbd1a',1,'lru.h']]],
-  ['init_5fhash',['init_hash',['../hash_8h.html#acd06af48c2cda8ad19417a6eb1bbe191',1,'hash.h']]],
-  ['init_5flnode',['init_lnode',['../dk__list_8h.html#a3ea33987d84e227c8398958e10a10bbd',1,'dk_list.h']]]
+  ['hash',['hash',['../structcache__line.html#a5dc1e6d6a7a0162b2db830f7b230abd4',1,'cache_line::hash()'],['../structcache__mem.html#a33b5307112f19826b77d6bcaf8044638',1,'cache_mem::hash()']]],
+  ['hash_2eh',['hash.h',['../hash_8h.html',1,'']]],
+  ['hash_5finsert',['hash_insert',['../lru_8c.html#a9db056188028c8ff40a396e239f5f261',1,'lru.c']]],
+  ['hash_5frow',['hash_row',['../structhash__row.html',1,'']]],
+  ['hash_5ftable',['hash_table',['../structhash__table.html',1,'']]],
+  ['head',['head',['../structhash__row.html#aeef0a2f42e9fa516efe336bba7a990d4',1,'hash_row::head()'],['../structcache__line.html#af231d538713478b74fc7811adc00545b',1,'cache_line::head()']]],
+  ['hit',['hit',['../structcache__mem.html#a2b8742701cf4beaff0639d36d52209d9',1,'cache_mem']]],
+  ['host',['host',['../structworkload.html#a3d757b51dfb82980f5a979a97bf0dfa1',1,'workload']]]
 ];

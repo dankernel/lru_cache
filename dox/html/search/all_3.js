@@ -1,8 +1,10 @@
 var searchData=
 [
-  ['debug_5foption',['DEBUG_OPTION',['../lru_8h.html#ae596a4581aaa87caa5cfc716730adaa1',1,'lru.h']]],
-  ['del_5fcm',['del_cm',['../lru_8h.html#a23006b111470e3ef68070346a710bc65',1,'lru.h']]],
-  ['disk_5fnum',['disk_num',['../structworkload.html#ac5fbfd8a1e652dc2b6e742ce685eb1fa',1,'workload']]],
-  ['dk_5flist',['dk_list',['../dk__list_8h.html#ac43e6febb62e5d3998f206e4eafcad5e',1,'dk_list.h']]],
-  ['dk_5flist_2eh',['dk_list.h',['../dk__list_8h.html',1,'']]]
+  ['cache_5fblock_5fsize',['CACHE_BLOCK_SIZE',['../lru_8c.html#a9e92828e1e7a7cc03003c00282384f96',1,'lru.c']]],
+  ['cache_5flen',['CACHE_LEN',['../lru_8c.html#a5f235d9e65a9cf74d98a037841b04f42',1,'lru.c']]],
+  ['cache_5fline',['cache_line',['../structcache__line.html',1,'']]],
+  ['cache_5fmem',['cache_mem',['../structcache__mem.html',1,'']]],
+  ['cache_5fsize',['CACHE_SIZE',['../lru_8c.html#a8a6befd630ea1c2ab260266f7466540c',1,'lru.c']]],
+  ['compiler_2eh',['compiler.h',['../compiler_8h.html',1,'']]],
+  ['container_5fof',['container_of',['../dk__list_8h.html#af8c317a42292b61c93aae91e59118a46',1,'dk_list.h']]]
 ];

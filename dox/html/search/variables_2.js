@@ -1,6 +1,7 @@
 var searchData=
 [
-  ['len',['len',['../structhash__table.html#a5c37715c358be0aea139f968bd44d3ae',1,'hash_table']]],
-  ['line',['line',['../structcache__line.html#a22870a00436e7425597606393d81eb2c',1,'cache_line']]],
-  ['list',['list',['../structcache__mem.html#a785dde86afb87f8825779f50e29d6bd7',1,'cache_mem']]]
+  ['hash',['hash',['../structcache__line.html#a5dc1e6d6a7a0162b2db830f7b230abd4',1,'cache_line::hash()'],['../structcache__mem.html#a33b5307112f19826b77d6bcaf8044638',1,'cache_mem::hash()']]],
+  ['head',['head',['../structhash__row.html#aeef0a2f42e9fa516efe336bba7a990d4',1,'hash_row::head()'],['../structcache__line.html#af231d538713478b74fc7811adc00545b',1,'cache_line::head()']]],
+  ['hit',['hit',['../structcache__mem.html#a2b8742701cf4beaff0639d36d52209d9',1,'cache_mem']]],
+  ['host',['host',['../structworkload.html#a3d757b51dfb82980f5a979a97bf0dfa1',1,'workload']]]
 ];

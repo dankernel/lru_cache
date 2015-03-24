@@ -120,7 +120,7 @@ struct cache_mem *init_cache_mem(unsigned long size)
   cm->write = 0;
   cm->hit = 0;
 
-  init_hash_list(cm, size << 4);
+  init_hash_list(cm, size);
 
   return cm;
 }/*}}}*/
@@ -353,6 +353,7 @@ int run_cache(struct cache_mem *cm, struct workload *wl)
      /* ret is errno or hit */
      ret = LRU_cache(cm, start + i);
 
+     /* count... (statistics) */
      if (wl->type == READ) {
        cm->read++;
        if (ret == 1) {
@@ -479,12 +480,12 @@ end:
   report_cm(cm);
 
   /* DEBUG.. PRINT LIST */
-  if (0) 
+  if (DEBUG_OPTION) 
     ret = print_cm(cm);
-
   if (ret < 0)
     printf("Err\n");
 
+  /* terminate  */
   del_cm(cm);
   printf("END\n");
 
